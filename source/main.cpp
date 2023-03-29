@@ -75,6 +75,7 @@ class Card
 
 Card::Card(string name, string cardText, int manaCost)
 {
+    cout << "creating card\n";
     m_name = name;
     m_cardText = cardText;
     m_manaCost = manaCost;
@@ -87,25 +88,21 @@ class Minion : public Card
     public: 
         int m_health {};
         int m_attack {};
-        Minion(string name, string cardText, int manaCost, int health, int attack);
+        Minion(string name, string cardText, int manaCost, int health, int attack) : Card(name, cardText, manaCost)
+        {
+            cout << "creating minion\n";
+            m_health = health;
+            m_attack = attack;
+        }
         void print()
         {
             cout << m_name << ":\n"
                 << "Mana Cost: " << m_manaCost << '\n'
                 << "Attack: " << m_attack << '\n'
                 << "Health: " << m_health << '\n'
-                << "Description: " << m_cardText << '\n'
+                << "Card Text: " << m_cardText << '\n';
         }
 };
-
-Minion::Minion(string name, string cardText, int manaCost, int health, int attack)
-{
-    Card(name, cardText, manaCost);
-    m_health = health;
-    m_attack = attack;
-}
-
-
 
 int main(){
     // Player p1 {"playa1", 30};
